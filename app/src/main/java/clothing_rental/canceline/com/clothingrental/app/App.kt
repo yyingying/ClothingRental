@@ -5,8 +5,10 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import clothing_rental.canceline.com.clothingrental.BuildConfig
 import clothing_rental.canceline.com.clothingrental.base.util.L
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  * Created by 张宇 on 2018/2/4.
@@ -33,6 +35,12 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+        ARouter.init(this)
 
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
