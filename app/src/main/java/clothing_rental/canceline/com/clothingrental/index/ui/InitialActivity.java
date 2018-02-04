@@ -25,6 +25,7 @@ public class InitialActivity extends BaseActivity {
         @Override
         public void run() {
             Router.navTo("/main/index");
+            finish();
         }
     };
 

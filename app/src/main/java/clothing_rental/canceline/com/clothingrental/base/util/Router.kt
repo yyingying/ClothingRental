@@ -11,8 +11,8 @@ import com.alibaba.android.arouter.launcher.ARouter
  */
 object Router {
     @JvmStatic
-    fun navTo(path: String) = ARouter.getInstance().build(path).navigation(App.currentContext)
+    fun navTo(path: String): Any? = ARouter.getInstance().build(path).navigation(App.currentContext)
 
     @JvmStatic
-    fun navTo(uri: Uri) = ARouter.getInstance().build(uri).navigation(App.currentContext)
+    fun navTo(uri: Uri): Any? = ARouter.getInstance().build(uri).navigation(App.currentContext)
 }
