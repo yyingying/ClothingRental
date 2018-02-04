@@ -4,12 +4,11 @@ package clothing_rental.canceline.com.clothingrental.index.ui;
 import android.os.Handler;
 import android.os.Bundle;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-
 import clothing_rental.canceline.com.clothingrental.R;
+import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
 
-public class innitialActivity extends BaseActivity {
+public class InitialActivity extends BaseActivity {
 
 
     private final Handler mainThread = new Handler();
@@ -25,7 +24,7 @@ public class innitialActivity extends BaseActivity {
     private Runnable delayToMain = new Runnable() {
         @Override
         public void run() {
-            ARouter.getInstance().build("/main/index").navigation(getContext());
+            Router.navTo("/main/index");
         }
     };
 
