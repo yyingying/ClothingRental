@@ -15,12 +15,13 @@ class LoginActivity : AppCompatActivity() {
 
         registerButton.setOnClickListener({
             val intent = Intent(this, RegisterActivity::class.java)
+            /*连接组件，packagecontext为上下文，class是要连文件的class*/
             startActivity(intent)
         })
 
         loginButton.setOnClickListener({
-            val intent = Intent(this, RentalActivity::class.java)//界面跳转
-            startActivity(intent)
+
+            finish();
         })
     }
 }

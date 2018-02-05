@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="clothing_rental.canceline.com.clothingrental">
 
+    <!-- 包名唯一性 -->
+    <!-- 应用相关的信息 -->
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -20,10 +22,13 @@
         <activity android:name=".index.ui.InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <!-- 首页面 -->
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!-- 应用在程序列表显示 -->
             </intent-filter>
         </activity>
-        <activity android:name=".login.ui.LoginActivity"></activity>
+        <activity android:name=".login.ui.LoginActivity" />
+        <activity android:name=".login.ui.AgreementActivity" />
     </application>
 
 </manifest>
