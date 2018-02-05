@@ -4,9 +4,11 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import clothing_rental.canceline.com.clothingrental.R
-import clothing_rental.canceline.com.clothingrental.RentalActivity
+import clothing_rental.canceline.com.clothingrental.base.util.Router
+import com.alibaba.android.arouter.facade.annotation.Route
 import kotlinx.android.synthetic.main.activity_login.*
 
+@Route(path = "/login/input")
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +22,11 @@ class LoginActivity : AppCompatActivity() {
         })
 
         loginButton.setOnClickListener({
-
-            finish();
+            finish()
         })
+
+        agreementText.setOnClickListener {
+            Router.navTo("/login/agreement")
+        }
     }
 }

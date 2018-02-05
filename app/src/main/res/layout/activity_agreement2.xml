@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context="clothing_rental.canceline.com.clothingrental.login.ui.AgreementActivity">
 
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我是个X" />
 </android.support.constraint.ConstraintLayout>
