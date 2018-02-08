@@ -7,4 +7,4 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  * E-mail: zhangyu4@yy.com
  * YY: 909017428
  */
-class BaseFragment : RxFragment()
+abstract class BaseFragment : RxFragment()

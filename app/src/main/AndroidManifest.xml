@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="clothing_rental.canceline.com.clothingrental">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 包名唯一性 -->
     <!-- 应用相关的信息 -->
     <application
