@@ -82,17 +82,7 @@ public class MyFragment1 extends BaseFragment {
         public void onBindViewHolder(final MyHolder holder, int position) {
             Item data = datas.get(position);
             holder.title.setText(data.getTitle());
-            Glide.with(getContext()).load(data.getUrl()).into(new SimpleTarget<GlideDrawable>() {
-                @Override
-                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                    holder.image.setImageDrawable(resource);
-                }
-
-                @Override
-                public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                    super.onLoadFailed(e, errorDrawable);
-                }
-            });
+            Glide.with(getContext()).load(data.getUrl()).into(holder.image);
         }
 
         @Override
