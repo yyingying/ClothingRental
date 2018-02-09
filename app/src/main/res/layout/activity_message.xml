@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="clothing_rental.canceline.com.clothingrental.mine.FavouriteActivity">
+    android:orientation="vertical">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,27 +10,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="心愿单"
+            android:text="消息"
             android:gravity="center"
             android:padding="5dp"
-            android:textSize="15dp"/>
+            android:textSize="18dp"/>
 
         <Button
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:drawableTop="@mipmap/left"
-            android:background="@color/bg_white"/>
+            android:background="@color/bg_white"
+            android:layout_gravity="center_vertical"/>
     </FrameLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"/>
+    <view
+        style="@style/line"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 </LinearLayout>
