@@ -19,40 +19,31 @@ import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
 @Route(path = "/main/index")
 public class MainActivity extends BaseActivity {
 
-    private Button button_home;
-    private Button button_all;
-    private Button button_mine;
 
-    ViewPager vpager = findViewById(R.id.vpager);
+    private ViewPager vpager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        button_home=findViewById(R.id.rb_home);
-        button_home.setOnClickListener(new View.OnClickListener() {
+        vpager = findViewById(R.id.vpager);
+        RadioGroup group = findViewById(R.id.rg_tab_bar);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                vpager.setCurrentItem(0);
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_home:
+                        vpager.setCurrentItem(0);
+                        break;
+                    case R.id.rb_all:
+                        vpager.setCurrentItem(1);
+                        break;
+                    case R.id.rb_mine:
+                        vpager.setCurrentItem(2);
+                        break;
+                }
             }
         });
-        button_all=findViewById(R.id.rb_all);
-        button_all.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vpager.setCurrentItem(1);
-            }
-        });
-        button_mine=findViewById(R.id.rb_mine);
-        button_mine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vpager.setCurrentItem(2);
-            }
-        });
-
-//        RadioGroup group = findViewById(R.id.rg_tab_bar);
 
         vpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -74,16 +65,3 @@ public class MainActivity extends BaseActivity {
         });
     }
 }
-//    public void onCheckedChanged(RadioGroup group, int checkedId) {
-//        switch (checkedId) {
-//            case R.id.rb_home:
-//                vpager.setCurrentItem(0);
-//                break;
-//            case R.id.rb_all:
-//                vpager.setCurrentItem(1);
-//                break;
-//            case R.id.rb_mine:
-//                vpager.setCurrentItem(2);
-//                break;
-//        }
-//    }
