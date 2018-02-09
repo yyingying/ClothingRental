@@ -3,6 +3,7 @@
     package="clothing_rental.canceline.com.clothingrental">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 包名唯一性 -->
     <!-- 应用相关的信息 -->
     <application
@@ -29,6 +30,7 @@
         </activity>
         <activity android:name=".login.ui.LoginActivity" />
         <activity android:name=".login.ui.AgreementActivity" />
+        <activity android:name=".mine.FavouriteActivity"></activity>
     </application>
 
 </manifest>
