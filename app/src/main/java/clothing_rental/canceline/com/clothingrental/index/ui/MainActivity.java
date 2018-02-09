@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -23,6 +24,8 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         ViewPager vpager = findViewById(R.id.vpager);
+//        RadioGroup group = findViewById(R.id.rg_tab_bar);
+
         vpager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -43,3 +46,16 @@ public class MainActivity extends BaseActivity {
         });
     }
 }
+//    public void onCheckedChanged(RadioGroup group, int checkedId) {
+//        switch (checkedId) {
+//            case R.id.rb_home:
+//                vpager.setCurrentItem(0);
+//                break;
+//            case R.id.rb_all:
+//                vpager.setCurrentItem(1);
+//                break;
+//            case R.id.rb_mine:
+//                vpager.setCurrentItem(2);
+//                break;
+//        }
+//    }
