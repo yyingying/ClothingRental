@@ -35,10 +35,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    //implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     // RxLifecycle基础库
-    //compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
     // Android组件库，里面定义了例如RxAppCompatActivity、RxFragment之类的Android组件
     // 内部引用了基础库和Android库，如果使用此库则无需再重复引用
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
@@ -48,6 +48,12 @@ dependencies {
     // 轮播Banner
     implementation 'com.jude:rollviewpager:1.4.6'
     implementation 'com.github.bumptech.glide:glide:3.8.0'
+    //3.5.5：请务必查看下面注释[1]
+    //compile 'cn.bmob.android:bmob-sdk:3.5.5'
+    compile('cn.bmob.android:bmob-sdk:3.5.5') {
+        exclude group: 'io.reactivex:rxandroid'
+        exclude group: 'io.reactivex:rxjava'
+    }
 }
 
 repositories {

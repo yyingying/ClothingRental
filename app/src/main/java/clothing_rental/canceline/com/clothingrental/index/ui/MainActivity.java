@@ -1,5 +1,6 @@
 package clothing_rental.canceline.com.clothingrental.index.ui;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,6 +16,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import cn.bmob.v3.Bmob;
 
 @Route(path = "/main/index")
 public class MainActivity extends BaseActivity {
@@ -26,6 +28,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         vpager = findViewById(R.id.vpager);
         RadioGroup group = findViewById(R.id.rg_tab_bar);
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -63,5 +66,6 @@ public class MainActivity extends BaseActivity {
                 return 3;
             }
         });
+
     }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle
 import clothing_rental.canceline.com.clothingrental.BuildConfig
 import clothing_rental.canceline.com.clothingrental.base.util.L
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity
+import cn.bmob.v3.Bmob
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
@@ -68,5 +69,6 @@ class App : Application() {
             }
 
         })
+        Bmob.initialize(this, "39eda665add603e3e6f23ecfd16e0588")
     }
 }
