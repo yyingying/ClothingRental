@@ -19,29 +19,26 @@ import clothing_rental.canceline.com.clothingrental.R;
  * Created by kingShin on 2018/3/14.
  */
 
-public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
-    private String aName;
-    private String aUrl;
+public class Adapter3 extends DelegateAdapter.Adapter<Adapter3.MyHolder>{
+    private double aID;
     private double aPrice;
-    private double aRental_price;
+    private String aPlace;
     private Context mContext;
 
-    public Adapter1(Data datas, Context context) {
+    public Adapter3(Data datas, Context context) {
         super();
-        this.aName = datas.getName();
-        this.aUrl = datas.getUrl();
+        this.aID = datas.getID();
         this.aPrice = datas.getPrice();
-        this.aRental_price = datas.getRental_price();
+        this.aPlace = datas.getPlace();
         mContext = context;
     }
 
     @Override
     // 填充onCreateViewHolder方法返回的holder中的控件
-    public void onBindViewHolder(Adapter1.MyHolder holder, int position) {
-        Glide.with(mContext).load(aUrl).into(holder.imageView);
-        holder.textView_name.setText(aName);
-        holder.textView_price.setText(String.valueOf(aPrice)+"/天");
-        holder.textView_rprice.setText("新品价："+String.valueOf(aRental_price));
+    public void onBindViewHolder(Adapter3.MyHolder holder, int position) {
+        holder.textView_ID.setText(String.valueOf(aID));
+        holder.textView_price.setText(String.valueOf(aPrice));
+        holder.textView_place.setText(String.valueOf(aPlace));
     }
 
     @Override
@@ -51,10 +48,10 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
 
     @Override
     // 重写onCreateViewHolder方法，返回一个自定义的ViewHolder
-    public Adapter1.MyHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
+    public Adapter3.MyHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
         // 填充布局
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_details_1, null);
-        Adapter1.MyHolder holder = new Adapter1.MyHolder(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_details_3, null);
+        Adapter3.MyHolder holder = new Adapter3.MyHolder(view);
         return holder;
     }
 
@@ -65,17 +62,15 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
 
     // 定义内部类继承ViewHolder
     class MyHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
-        private TextView textView_name;
+        private TextView textView_ID;
         private TextView textView_price;
-        private TextView textView_rprice;
+        private TextView textView_place;
 
         public MyHolder(View view) {
             super(view);
-            imageView = (ImageView) view.findViewById(R.id.image);
-            textView_name = (TextView) view.findViewById(R.id.name);
+            textView_ID = (TextView) view.findViewById(R.id.ID);
             textView_price = (TextView) view.findViewById(R.id.price);
-            textView_rprice = (TextView) view.findViewById(R.id.rental_price);
+            textView_place = (TextView) view.findViewById(R.id.place);
         }
     }
 }

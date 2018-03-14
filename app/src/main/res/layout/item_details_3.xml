@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="商品编号"/>
         <TextView
+            android:id="@+id/ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234"/>
@@ -30,7 +31,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/gray"
         ></View>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:text="新品价"/>
         <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234"/>
@@ -50,7 +52,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/gray"
         ></View>
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="产地"/>
         <TextView
+            android:id="@+id/place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1234"/>
@@ -70,7 +73,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorAccent"
+        android:background="@color/gray"
         ></View>
 
 </LinearLayout>

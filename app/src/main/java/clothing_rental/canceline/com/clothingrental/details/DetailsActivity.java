@@ -38,13 +38,13 @@ public class DetailsActivity extends BaseActivity {
         Adapter1 adapter1 = new Adapter1(mDatas, this);
         delegateAdapter.addAdapter(adapter1);
 
-        Adapter2 adapter2 = new Adapter2();
+        Adapter2 adapter2 = new Adapter2(this);
         delegateAdapter.addAdapter(adapter2);
 
-        Adapter1 adapter3 = new Adapter3(data);
+        Adapter3 adapter3 = new Adapter3(mDatas,this);
         delegateAdapter.addAdapter(adapter3);
 
-        delegateAdapter.notifyDataSetChange();
+        delegateAdapter.notifyDataSetChanged();
     }
 
     private void initData() {

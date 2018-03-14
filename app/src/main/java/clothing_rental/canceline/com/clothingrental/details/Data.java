@@ -9,13 +9,17 @@ public class Data {
     private String dName;
     private double dPrice;
     private double dRental_price;
+    private double dID;
+    private String dPlace;
 
-    public Data(String name,String url,double price,double rental_price){
+    public Data(String name,String url,double price,double rental_price,double ID,String placce){
         super();
         this.dName = name;
         this.dUrl = url;
         this.dPrice = price;
         this.dRental_price = rental_price;
+        this.dID = ID;
+        this.dPlace = placce;
     }
 
     public String getName() {
@@ -32,5 +36,13 @@ public class Data {
 
     public double getRental_price() {
         return dRental_price;
+    }
+
+    public double getID() {
+        return dID;
+    }
+
+    public String getPlace() {
+        return dPlace;
     }
 }
