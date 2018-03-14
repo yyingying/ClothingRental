@@ -7,19 +7,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/exit_btn"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:drawableTop="@mipmap/left"
-            android:background="@color/bg_white"
-            android:layout_gravity="center_vertical"/>
-
+            android:background="@color/bg_white"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="消息"
+            android:text="实名认证"
             android:gravity="center"
             android:padding="5dp"
             android:textSize="20dp"
@@ -31,10 +28,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

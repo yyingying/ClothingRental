@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener({
             finish()
+            Router.navTo("/main/index")
         })
 
         agreementText.setOnClickListener {

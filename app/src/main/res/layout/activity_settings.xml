@@ -7,34 +7,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/exit_btn"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:drawableTop="@mipmap/left"
-            android:background="@color/bg_white"
-            android:layout_gravity="center_vertical"/>
-
+            android:background="@color/bg_white"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="消息"
+            android:text="设置"
             android:gravity="center"
             android:padding="5dp"
             android:textSize="20dp"
             android:background="@color/bg_white"/>
-
     </FrameLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"/>
+    <Button
+        android:text="我的收货地址"
+        style="@style/mine_below_button"
+        />
+    <View
+        style="@style/line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <Button
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:text="关于"
+        style="@style/mine_below_button"
+        />
+    <View
+        style="@style/line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <Button
+        android:id="@+id/exitID_btn"
+        android:text="退出账号"
+        style="@style/mine_below_button"
+        />
+    <View
+        style="@style/line"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
 
 </LinearLayout>

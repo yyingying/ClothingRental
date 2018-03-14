@@ -23,6 +23,13 @@ import clothing_rental.canceline.com.clothingrental.mine.FavouriteActivity;
 
 public class MyFragment3 extends Fragment {
     private Button btn_openFavourite;
+    private Button btn_openOrders;
+    private Button btn_openMessage;
+    private Button btn_openPledge;
+    private Button btn_openCertification;
+    private Button btn_openGingeCertification;
+    private Button btn_openQuestion;
+    private Button btn_openSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +42,63 @@ public class MyFragment3 extends Fragment {
                 Router.navTo("/mine/Favourite");
             }
         });
+
+        btn_openOrders = (Button) view.findViewById(R.id.orders_btn);
+        btn_openOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Orders");
+            }
+        });
+
+        btn_openMessage = view.findViewById(R.id.message_btn);
+        btn_openMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Message");
+            }
+        });
+
+        btn_openPledge = view.findViewById(R.id.pledge_btn);
+        btn_openPledge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Pledge");
+            }
+        });
+
+        btn_openCertification = view.findViewById(R.id.certification_btn);
+        btn_openCertification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Certification");
+            }
+        });
+
+        btn_openGingeCertification = view.findViewById(R.id.gingeCertification_btn);
+        btn_openGingeCertification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/GingeCertification");
+            }
+        });
+
+        btn_openQuestion = view.findViewById(R.id.question_btn);
+        btn_openQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Question");
+            }
+        });
+
+        btn_openSettings = view.findViewById(R.id.settings_btn);
+        btn_openSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/mine/Settings");
+            }
+        });
+
         return view;
     }
 }

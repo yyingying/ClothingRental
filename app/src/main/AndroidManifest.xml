@@ -44,6 +44,15 @@
         <activity android:name=".login.ui.LoginActivity" />
         <activity android:name=".login.ui.AgreementActivity" />
         <activity android:name=".mine.FavouriteActivity"></activity>
+        <activity android:name=".mine.OrdersActivity" />
+        <activity android:name=".mine.MessageActivity" />
+        <activity android:name=".mine.PledgeActivity" />
+        <activity android:name=".mine.PledgeStatementActivity" />
+        <activity android:name=".mine.QuestionActivity" />
+        <activity android:name=".mine.CertificationActivity" />
+        <activity android:name=".mine.GingeCertificationActivity" />
+        <activity android:name=".mine.SettingsActivity" />
+        <activity android:name=".details.DetailsActivity" />
     </application>
 
 </manifest>

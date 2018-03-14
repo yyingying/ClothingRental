@@ -24,6 +24,7 @@
 
 
             <Button
+                android:id="@+id/settings_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:drawableTop="@mipmap/setting"
@@ -81,6 +82,7 @@
             android:layout_weight="1"
             />
         <Button
+            android:id="@+id/orders_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
@@ -91,6 +93,7 @@
             android:layout_weight="1"
             />
         <Button
+            android:id="@+id/message_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
@@ -112,6 +115,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/pledge_btn"
             android:drawableLeft="@mipmap/cash_pledge"
             android:text="押金"
             style="@style/mine_below_button"
@@ -120,6 +124,7 @@
             style="@style/line"
             android:layout_marginLeft="40dp"/>
         <Button
+            android:id="@+id/certification_btn"
             android:drawableLeft="@mipmap/certification"
             android:text="身份认证"
             style="@style/mine_below_button"
@@ -128,6 +133,7 @@
             style="@style/line"
             android:layout_marginLeft="40dp"/>
         <Button
+            android:id="@+id/gingeCertification_btn"
             android:drawableLeft="@mipmap/ginge_certification"
             android:text="芝麻认证"
             style="@style/mine_below_button"
@@ -136,6 +142,7 @@
             style="@style/line"
             android:layout_marginLeft="40dp"/>
         <Button
+            android:id="@+id/question_btn"
             android:drawableLeft="@mipmap/commonquestion"
             android:text="常见问题"
             style="@style/mine_below_button"

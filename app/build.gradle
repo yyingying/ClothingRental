@@ -57,6 +57,10 @@ dependencies {
         exclude group: 'io.reactivex:rxandroid'
         exclude group: 'io.reactivex:rxjava'
     }
+
+    compile('com.alibaba.android:vlayout:1.2.12@aar'){
+        transitive = true
+    }
 }
 
 repositories {

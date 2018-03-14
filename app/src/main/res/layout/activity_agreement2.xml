@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="clothing_rental.canceline.com.clothingrental.login.ui.AgreementActivity">
-
-    <Button
-        android:id="@+id/closeBtn"
-        android:layout_width="wrap_content"
+    tools:context="clothing_rental.canceline.com.clothingrental.login.ui.AgreementActivity"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是个X" />
-</android.support.constraint.ConstraintLayout>
+        >
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:drawableTop="@mipmap/left"
+            android:background="@color/bg_white"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="用户租赁协议"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:background="@color/bg_white"/>
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="本协议是您与本网络科技有限公司之间关于使用衣物租赁平台进行商品租赁和购买的相关使用规则的法律协议。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="一、未通过实名制认证的会员一次性收取 ¥200元的押金。您可于会员期结束并完好归还租赁商品后，在APP内申请退还押金。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="二、衣物租赁平台在每件服装退租入库后，都会由自营洗衣工厂或特约清洗服务供应商进行清洗、消毒、保养处理和质检之后，才会再次作为可租赁货品上架。接受本协议表示您已认可衣物租赁平台自营洗衣工厂或特约清洗服务供应商所提供的清洗、消毒、保养处理服务以及质检标准。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="三、您的租赁和售卖订单，会由衣物租赁平台指定的第三方物流服务提供商进行往返运送。您无需承担运送费用。您可额外付费指定顺丰作为您的订单送达物流服务提供商，每次额外收费8元。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="四、因如下情况造成订单延迟或无法配送等，衣物租赁平台不承担延迟配送或无法配送的责任：
+（1）用户提供的信息错误、地址不详细等原因导致的；
+（2）货物送达后无人签收，导致无法配送或延迟配送的；
+（3）第三方物流配送延迟或取消导致的；
+（4）不可抗力因素导致的，例如：自然灾害、交通戒严、突发战争等。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="五、如您所下的租赁和购买订单中，有之前用户未在规定租期内归还等不可控的客观原因，衣物租赁平台有权取消或部分取消您的订单，但您可联系客服领取“无忧险”补偿。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="六、如您在使用的过程中造成商品因正常穿着而发生轻微污渍、成色降低、正常磨损等情况，您无需承担责任和赔偿相应费用。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="七、如您因使用不当或忽略造成商品的严重破损（无法修补并影响再次租赁或售卖）、丢失、逾期未归还、归还商品不一致等情况，您需要承担如下的赔偿责任：
+1. 如衣物租赁平台自营或者第三方清洗服务提供商经过检测认定商品已经损坏，造成报废（无法修补并影响再次租赁或售卖），则需由您承担该商品实际购买价格的金额作为赔偿。
+2. 如您的商品丢失或被盗，您需要承担商品购买价格的金额作为赔偿。如因您非本人签收快递造成的损失，视作商品丢失。
+3. 如您在约定租赁期限结束7天后仍未归还商品，我们将取消您后续订单的发货直至您归还商品，并扣除商品实际购买价格所折算的会员期限作为对衣物租赁平台平台的补偿。
+4. 如您归还的商品与衣物租赁平台发出的原商品不一致，经过核实确认后，您需承担商品实际购买价格的金额作为赔偿。
+5. 如发生服装在会员期结束后逾期未归还的情况，衣物租赁平台将保留追究租赁人法律责任的权利。"/><TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:lineSpacingExtra="7dp"
+            android:text="八、衣物租赁平台会由自营或者第三方清洗服务提供商对商品进行标准化的清洗、修补以及消毒作业，请勿私自对商品进行清洗、修补和消毒。如因您私自清洗、修补和消毒等原因造成商品损坏，则需由您承担该商品实际购买价格的金额作为赔偿。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="九、请您于归还商品前确认已经取出附着在衣物内的私人物品。如因您在归还商品时未能取出私人物品造成的任何损失，衣物租赁平台均不承担任何责任。"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
