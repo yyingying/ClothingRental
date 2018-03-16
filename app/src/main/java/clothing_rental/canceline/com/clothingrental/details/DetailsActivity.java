@@ -1,11 +1,18 @@
 package clothing_rental.canceline.com.clothingrental.details;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
@@ -17,6 +24,7 @@ import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
 public class DetailsActivity extends BaseActivity {
     private RecyclerView mRecyclerViews;
     private Data mDatas;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,7 @@ public class DetailsActivity extends BaseActivity {
         Adapter1 adapter1 = new Adapter1(mDatas, this);
         delegateAdapter.addAdapter(adapter1);
 
-        Adapter2 adapter2 = new Adapter2(this);
+        Adapter2 adapter2 = new Adapter2(fragmentManager,this);
         delegateAdapter.addAdapter(adapter2);
 
         Adapter3 adapter3 = new Adapter3(mDatas,this);

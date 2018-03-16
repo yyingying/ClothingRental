@@ -53,6 +53,11 @@
         style="@style/line"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
+    <Button
+        android:id="@+id/new_btn"
+        android:text="更新图片"
+        style="@style/mine_below_button"
+        />
 
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import cn.bmob.v3.Bmob;
 
 public class InitialActivity extends BaseActivity {
 

@@ -3,6 +3,7 @@ package clothing_rental.canceline.com.clothingrental.login.ui
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import clothing_rental.canceline.com.clothingrental.R
 import clothing_rental.canceline.com.clothingrental.base.util.Router
 import com.alibaba.android.arouter.facade.annotation.Route

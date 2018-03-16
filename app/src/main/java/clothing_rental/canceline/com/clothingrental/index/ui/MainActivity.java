@@ -8,15 +8,23 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.security.PrivateKey;
+
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import clothing_rental.canceline.com.clothingrental.data_base.Person;
+import clothing_rental.canceline.com.clothingrental.login.ui.LoginActivity;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 @Route(path = "/main/index")
 public class MainActivity extends BaseActivity {

@@ -22,14 +22,16 @@ import clothing_rental.canceline.com.clothingrental.R;
 public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
 
     private RelativeLayout layout1;
-   // private RelativeLayout layout2;
+    //private RelativeLayout layout2;
     //private RelativeLayout layout3;
 
     private Context mContext;
+    private FragmentManager mFragmentManager;
 
-    public Adapter2(Context context) {
+    public Adapter2(FragmentManager fragmentManager,Context context) {
         super();
         mContext = context;
+        mFragmentManager = fragmentManager;
     }
 
     @Override
@@ -41,6 +43,7 @@ public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
     // 重写onCreateViewHolder方法，返回一个自定义的ViewHolder
     public Adapter2.MyHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
         // 填充布局
+
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_details_2, null);
         Adapter2.MyHolder holder = new Adapter2.MyHolder(view);
 
@@ -49,11 +52,9 @@ public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myDialogFragment.show(getFragmentManager,"dialog_fragment");
-
+                myDialogFragment.show(mFragmentManager,"dialog_fragment");
             }
         });
-
 
         return holder;
     }
