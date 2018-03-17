@@ -89,7 +89,7 @@ public class MyFragment1 extends BaseFragment {
         @Override
         public void onBindViewHolder(final MyHolder holder, final int position) {
             final Goods data = datas.get(position);
-            holder.title.setText(data.getGoodsID());
+            holder.title.setText(String.valueOf(data.getGoodsID()));
             Glide.with(getContext()).load(data.getPhoto().getUrl()).into(holder.image);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
