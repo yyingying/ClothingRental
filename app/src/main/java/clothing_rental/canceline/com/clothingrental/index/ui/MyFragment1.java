@@ -1,12 +1,9 @@
 package clothing_rental.canceline.com.clothingrental.index.ui;
 
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,20 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseFragment;
 import clothing_rental.canceline.com.clothingrental.data_base.Goods;
-import clothing_rental.canceline.com.clothingrental.index.model.Item;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -59,31 +50,34 @@ public class MyFragment1 extends BaseFragment {
         goodsBmobQuery.findObjects(new FindListener<Goods>() {
             @Override
             public void done(List<Goods> list, BmobException e) {
-                if(e==null){
-                    Toast.makeText(getActivity(),"sucess",Toast.LENGTH_LONG).show();
-                    String[]url = new  String[10];
-                    String[]goodsID = new String[10];
-                    for (int i=0;i<10;i++){
-                        url[i]=list.get(i).getPhoto().getUrl();
-                        goodsID[i]=list.get(i).getGoodsID().toString();
-                        mAdaper.addData(new Item(url[i],goodsID[i]));
-                    }
+                if (e == null) {
+                    Toast.makeText(getActivity(), "sucess", Toast.LENGTH_LONG).show();
+                    mAdaper.clearData();
+                    mAdaper.addData(list);
                     mAdaper.notifyDataSetChanged();
                 }
             }
         });
     }
 
+    private void onItemClick(Goods good, int position) {
+        //do what u want to do
+    }
+
     class MyAdaper extends RecyclerView.Adapter<MyAdaper.MyHolder> {
 
-        private List<Item> datas = new ArrayList<>();
+        private List<Goods> datas = new ArrayList<>();
 
-        public void addData(List<Item> datas) {
+        public void addData(List<Goods> datas) {
             this.datas.addAll(datas);
         }
 
-        public void addData(Item data) {
+        public void addData(Goods data) {
             this.datas.add(data);
+        }
+
+        public void clearData() {
+            this.datas.clear();
         }
 
         @Override
@@ -93,10 +87,16 @@ public class MyFragment1 extends BaseFragment {
         }
 
         @Override
-        public void onBindViewHolder(final MyHolder holder, int position) {
-            Item data = datas.get(position);
-            holder.title.setText(data.getTitle());
-            Glide.with(getContext()).load(data.getUrl()).into(holder.image);
+        public void onBindViewHolder(final MyHolder holder, final int position) {
+            final Goods data = datas.get(position);
+            holder.title.setText(data.getGoodsID());
+            Glide.with(getContext()).load(data.getPhoto().getUrl()).into(holder.image);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClick(data, position);
+                }
+            });
         }
 
         @Override
