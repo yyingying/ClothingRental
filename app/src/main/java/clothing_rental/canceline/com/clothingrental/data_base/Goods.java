@@ -8,20 +8,15 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 
 public class Goods extends BmobObject {
-    private Integer number;
+    private Integer goodsID;
     private String name;
     private Integer price;
     private Integer rental_price;
     private Integer stock;
-    private BmobFile pic;
+    private BmobFile photo;
+    private String place;
 
-    public Integer getNumber() {
-        return number;
-    }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
 
     public String getName() {
         return name;
@@ -53,5 +48,29 @@ public class Goods extends BmobObject {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public BmobFile getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(BmobFile photo) {
+        this.photo = photo;
+    }
+
+    public Integer getGoodsID() {
+        return goodsID;
+    }
+
+    public void setGoodsID(Integer goodsID) {
+        this.goodsID = goodsID;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }

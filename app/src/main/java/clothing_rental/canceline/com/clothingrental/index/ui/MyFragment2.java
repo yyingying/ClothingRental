@@ -23,7 +23,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
+import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import clothing_rental.canceline.com.clothingrental.index.model.Item;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 import static android.support.v7.widget.StaggeredGridLayoutManager.HORIZONTAL;
 import static android.support.v7.widget.StaggeredGridLayoutManager.VERTICAL;
@@ -48,15 +52,29 @@ public class MyFragment2 extends Fragment {
         recyclerView2.setAdapter(mAdaper2 = new MyFragment2.MyAdaper());
         recyclerView2.setLayoutManager(new StaggeredGridLayoutManager(2, VERTICAL));
 
-        mAdaper2.addData(Arrays.asList(
-                new Item("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1518090959472&di=0b15db54b5538c4d500281d3cd336512&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa1ec08fa513d2697c494b7745efbb2fb4316d850.jpg", "1"),
-                new Item("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=129829041,3031230996&fm=200&gp=0.jpg", "2"),
-                new Item("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1645868236,1934982672&fm=27&gp=0.jpg", "3"),
-                new Item("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2906541843,1492984080&fm=27&gp=0.jpg", "4"),
-                new Item("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2958647648,694918788&fm=27&gp=0.jpg", "5"),
-                new Item("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2207220898,2461703220&fm=27&gp=0.jpg", "6")
-        ));
-        mAdaper2.notifyDataSetChanged();
+        BmobQuery<Goods> goodsBmobQuery = new BmobQuery<>();
+        goodsBmobQuery.addWhereExists("objectId");
+        goodsBmobQuery.setLimit(6);
+        goodsBmobQuery.findObjects(new FindListener<Goods>() {
+            @Override
+            public void done(List<Goods> list, BmobException e) {
+                if (e==null){
+//                    for (int i=0;i<6;i++){
+//                        mAdaper.addData(new Item(list.get(0).getPhoto().getUrl(), list.get(0).getGoodsID()));
+//                    }
+
+//                    mAdaper2.addData(Arrays.asList(
+//                            new Item(list.get(0).getPhoto().getUrl(), list.get(0).getGoodsID()),
+//                            new Item(list.get(1).getPhoto().getUrl(), list.get(1).getGoodsID()),
+//                            new Item(list.get(2).getPhoto().getUrl(), list.get(2).getGoodsID()),
+//                            new Item(list.get(3).getPhoto().getUrl(), list.get(3).getGoodsID()),
+//                            new Item(list.get(4).getPhoto().getUrl(), list.get(4).getGoodsID()),
+//                            new Item(list.get(5).getPhoto().getUrl(), list.get(5).getGoodsID())
+//                    ));
+//                    mAdaper2.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     class MyAdaper extends RecyclerView.Adapter<MyFragment2.MyAdaper.MyHolder> {

@@ -57,5 +57,6 @@ public class DetailsActivity extends BaseActivity {
 
     private void initData() {
         //从云存储上获取数据并传输到mDatas
+        
     }
 }

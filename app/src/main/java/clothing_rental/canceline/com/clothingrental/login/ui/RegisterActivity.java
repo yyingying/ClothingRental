@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import java.util.regex.Pattern;
 
 import clothing_rental.canceline.com.clothingrental.R;
@@ -19,8 +21,8 @@ import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
 import clothing_rental.canceline.com.clothingrental.data_base.Person;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
-import okhttp3.Route;
 
+@Route(path = "/login/register")
 public class RegisterActivity extends BaseActivity {
 
     private Button register_btn;
@@ -61,6 +63,7 @@ public class RegisterActivity extends BaseActivity {
                             public void done(String s, BmobException e) {
                                 if(e==null){
                                     Toast.makeText(RegisterActivity.this,"sucess",Toast.LENGTH_LONG).show();
+                                    Router.navTo("/main/index");
                                 }else{
                                     Toast.makeText(RegisterActivity.this,"用户名已存在，请重新输入",Toast.LENGTH_LONG).show();
                                 }

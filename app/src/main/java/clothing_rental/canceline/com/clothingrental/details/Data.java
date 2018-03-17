@@ -9,10 +9,10 @@ public class Data {
     private String dName;
     private double dPrice;
     private double dRental_price;
-    private double dID;
+    private Integer dID;
     private String dPlace;
 
-    public Data(String name,String url,double price,double rental_price,double ID,String placce){
+    public Data(String name,String url,double price,double rental_price,Integer ID,String placce){
         super();
         this.dName = name;
         this.dUrl = url;

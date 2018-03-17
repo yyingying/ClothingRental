@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
@@ -25,7 +26,11 @@ import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseFragment;
+import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import clothing_rental.canceline.com.clothingrental.index.model.Item;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 import static android.support.v7.widget.StaggeredGridLayoutManager.VERTICAL;
 
@@ -49,15 +54,24 @@ public class MyFragment1 extends BaseFragment {
         recyclerView.setAdapter(mAdaper = new MyAdaper());
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, VERTICAL));
 
-        mAdaper.addData(Arrays.asList(
-                new Item("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1518090959472&di=0b15db54b5538c4d500281d3cd336512&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa1ec08fa513d2697c494b7745efbb2fb4316d850.jpg", "1"),
-                new Item("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=129829041,3031230996&fm=200&gp=0.jpg", "2"),
-                new Item("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1645868236,1934982672&fm=27&gp=0.jpg", "3"),
-                new Item("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2906541843,1492984080&fm=27&gp=0.jpg", "4"),
-                new Item("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2958647648,694918788&fm=27&gp=0.jpg", "5"),
-                new Item("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2207220898,2461703220&fm=27&gp=0.jpg", "6")
-        ));
-        mAdaper.notifyDataSetChanged();
+        BmobQuery<Goods> goodsBmobQuery = new BmobQuery<>();
+        goodsBmobQuery.addWhereExists("objectId");
+        goodsBmobQuery.findObjects(new FindListener<Goods>() {
+            @Override
+            public void done(List<Goods> list, BmobException e) {
+                if(e==null){
+                    Toast.makeText(getActivity(),"sucess",Toast.LENGTH_LONG).show();
+                    String[]url = new  String[10];
+                    String[]goodsID = new String[10];
+                    for (int i=0;i<10;i++){
+                        url[i]=list.get(i).getPhoto().getUrl();
+                        goodsID[i]=list.get(i).getGoodsID().toString();
+                        mAdaper.addData(new Item(url[i],goodsID[i]));
+                    }
+                    mAdaper.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     class MyAdaper extends RecyclerView.Adapter<MyAdaper.MyHolder> {

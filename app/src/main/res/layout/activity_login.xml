@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="16dp"
-        android:hint="请输入你密码" />
+        android:hint="请输入你密码"
+        android:inputType="textPassword"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/registerButton_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

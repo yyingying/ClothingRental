@@ -7,6 +7,7 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class Person extends BmobObject {
+    private Integer personID;
     private String account;
     private String password;
     private String address;
@@ -60,5 +61,13 @@ public class Person extends BmobObject {
 
     public void setPledge(Boolean pledge) {
         this.pledge = pledge;
+    }
+
+    public Integer getPersonID() {
+        return personID;
+    }
+
+    public void setPersonID(Integer personID) {
+        this.personID = personID;
     }
 }

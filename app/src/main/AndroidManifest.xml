@@ -41,7 +41,7 @@
                 <!-- 应用在程序列表显示 -->
             </intent-filter>
         </activity>
-        <activity android:name=".login.ui.LoginActivity" />
+        <activity android:name=".login.ui.LoginActivity0" />
         <activity android:name=".login.ui.AgreementActivity" />
         <activity android:name=".mine.FavouriteActivity"></activity>
         <activity android:name=".mine.OrdersActivity" />
