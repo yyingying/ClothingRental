@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.bumptech.glide.Glide;
 
@@ -28,9 +29,8 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
     private Context mContext;
 
     public Adapter1(Goods goods, Context context) {
-        super();
         this.aName = goods.getName();
-        //this.aUrl = goods.getPhoto().getUrl();
+        this.aUrl = goods.getPhoto().getUrl();
         this.aPrice = goods.getPrice();
         this.aRental_price = goods.getRental_price();
         mContext = context;
@@ -39,10 +39,10 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
     @Override
     // 填充onCreateViewHolder方法返回的holder中的控件
     public void onBindViewHolder(Adapter1.MyHolder holder, int position) {
-       // Glide.with(mContext).load(aUrl).into(holder.imageView);
+        Glide.with(mContext).load(aUrl).into(holder.imageView_photo);
         holder.textView_name.setText(aName);
-        holder.textView_price.setText(String.valueOf(aPrice)+"/天");
-        holder.textView_rprice.setText("新品价："+String.valueOf(aRental_price));
+        holder.textView_price.setText(String.valueOf(aPrice) + "/天");
+        holder.textView_rprice.setText("新品价：" + String.valueOf(aRental_price));
     }
 
     @Override
@@ -55,25 +55,25 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
     public Adapter1.MyHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
         // 填充布局
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_details_1, null);
-        Adapter1.MyHolder holder = new Adapter1.MyHolder(view);
-        return holder;
+        return new Adapter1.MyHolder(view);
     }
 
     @Override
     public LayoutHelper onCreateLayoutHelper() {
-        return new SingleLayoutHelper();
+        return new LinearLayoutHelper();
     }
 
     // 定义内部类继承ViewHolder
     class MyHolder extends RecyclerView.ViewHolder {
-       // private ImageView imageView;
+        // private ImageView imageView;
         private TextView textView_name;
         private TextView textView_price;
         private TextView textView_rprice;
+        private ImageView imageView_photo;
 
         public MyHolder(View view) {
             super(view);
-     //       imageView = (ImageView) view.findViewById(R.id.image);
+            imageView_photo = (ImageView) view.findViewById(R.id.image);
             textView_name = (TextView) view.findViewById(R.id.name);
             textView_price = (TextView) view.findViewById(R.id.price);
             textView_rprice = (TextView) view.findViewById(R.id.rental_price);

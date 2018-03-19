@@ -54,7 +54,6 @@ public class DetailsActivity extends BaseActivity {
 //        Toast.makeText(DetailsActivity.this,goods.getName(), Toast.LENGTH_LONG).show();
 //        init(goods);
 //        Toast.makeText(DetailsActivity.this, goods.getName(), Toast.LENGTH_LONG).show();
-        ARouter.getInstance().inject(this);
         //得到控件
         mRecyclerViews = findViewById(R.id.recycle_view);
         //设置布局管理器
