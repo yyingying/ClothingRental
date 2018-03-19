@@ -8,12 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
+import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import clothing_rental.canceline.com.clothingrental.data_base.Person;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;

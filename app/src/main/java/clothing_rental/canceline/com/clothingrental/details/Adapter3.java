@@ -14,6 +14,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.bumptech.glide.Glide;
 
 import clothing_rental.canceline.com.clothingrental.R;
+import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 
 /**
  * Created by kingShin on 2018/3/14.
@@ -25,11 +26,11 @@ public class Adapter3 extends DelegateAdapter.Adapter<Adapter3.MyHolder>{
     private String aPlace;
     private Context mContext;
 
-    public Adapter3(Data datas, Context context) {
+    public Adapter3(Goods goods, Context context) {
         super();
-        this.aID = datas.getID();
-        this.aPrice = datas.getPrice();
-        this.aPlace = datas.getPlace();
+        this.aID = goods.getGoodsID();
+        this.aPrice = goods.getPrice();
+        this.aPlace = goods.getPlace();
         mContext = context;
     }
 

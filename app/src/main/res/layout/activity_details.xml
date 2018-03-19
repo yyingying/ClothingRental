@@ -6,13 +6,27 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="标题"
-            android:textSize="20sp"/>
+        android:background="@color/bg_white">
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:drawableTop="@mipmap/left"
+            android:background="@color/bg_white"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_favourite"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            />
     </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view"
@@ -23,8 +37,15 @@
     </android.support.v7.widget.RecyclerView>
 
     <Button
+        android:id="@+id/rentalButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="立即租用"
+        android:background="@drawable/btn_red_round"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
         />
 
 </LinearLayout>
