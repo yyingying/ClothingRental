@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
-import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseFragment;
 import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import cn.bmob.v3.BmobQuery;
@@ -67,9 +66,9 @@ public class MyFragment1 extends BaseFragment {
 
     private void onItemClick(Goods good, int position) {
         //do what u want to do
-
-        ARouter.getInstance().build("/details/DetailsActivity").withObject("Good",good).navigation();
-        Router.navTo("/details/DetailsActivity");
+        ARouter.getInstance().build("/details/DetailsActivity")
+                .withParcelable("Good", good)
+                .navigation(getContext());
     }
 
     class BannerAdapter extends DelegateAdapter.Adapter<BannerAdapter.BannerViewHolder> {
