@@ -53,6 +53,10 @@
         <activity android:name=".mine.GingeCertificationActivity" />
         <activity android:name=".mine.SettingsActivity" />
         <activity android:name=".details.DetailsActivity" />
+        <activity android:name=".details.rental.RentalActivity"/>
+        <activity android:name=".details.rental.AddAdressActivity"/>
+        <activity android:name=".mine.OrderDetailActivity"/>
+        <activity android:name=".mine.AdressManagementActivity"/>
     </application>
 
 </manifest>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ordersLinearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/ordersIDTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="订单号："
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:background="@color/bg_white"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <LinearLayout
+        android:id="@+id/favouriteLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:background="@color/bg_white">
+        <ImageView
+            android:id="@+id/ordersImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"/>
+        <TextView
+            android:id="@+id/ordersTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MiniTrunk肩背包"
+            android:layout_marginHorizontal="10dp"
+            android:layout_gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/ordersMoneyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="合计：178元（含运费）"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:gravity="right"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:background="@color/bg_white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+</LinearLayout>

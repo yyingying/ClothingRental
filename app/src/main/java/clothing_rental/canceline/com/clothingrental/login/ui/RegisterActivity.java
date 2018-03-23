@@ -55,7 +55,8 @@ public class RegisterActivity extends BaseActivity {
                     if (pwd_test==false){
                         Toast.makeText(RegisterActivity.this,"密码不符合要求，请重新输入",Toast.LENGTH_LONG).show();
                     }else {
-                        Person person = new Person();
+                        final Person person = new Person();
+
                         person.setAccount(account_editxt.getText().toString());
                         person.setPassword(password_editxt.getText().toString());
                         person.save(new SaveListener<String>() {
@@ -63,7 +64,10 @@ public class RegisterActivity extends BaseActivity {
                             public void done(String s, BmobException e) {
                                 if(e==null){
                                     Toast.makeText(RegisterActivity.this,"sucess",Toast.LENGTH_LONG).show();
+                                    LoginUtil.setPerson(person);
+                                    LoginUtil.setState(true);
                                     Router.navTo("/main/index");
+                                    finish();
                                 }else{
                                     Toast.makeText(RegisterActivity.this,"用户名已存在，请重新输入",Toast.LENGTH_LONG).show();
                                 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
+import clothing_rental.canceline.com.clothingrental.data_base.Adress;
 import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import clothing_rental.canceline.com.clothingrental.data_base.Person;
 import cn.bmob.v3.BmobQuery;
@@ -59,6 +60,22 @@ public class LoginActivity0 extends AppCompatActivity {
                             }else{
                                 if(test==true){
                                     Router.navTo("/main/index");
+                                    LoginUtil.setPerson(list.get(0));
+                                    LoginUtil.setState(true);
+                                    //给地址找一个值
+                                    BmobQuery<Adress> adressBmobQuery = new BmobQuery<>();
+                                    adressBmobQuery.addWhereEqualTo("userID",LoginUtil.getPersonID());
+                                    adressBmobQuery.findObjects(new FindListener<Adress>() {
+                                        @Override
+                                        public void done(List<Adress> list, BmobException e) {
+                                            if(e==null){
+                                                if(list.size()!=0){
+                                                    LoginUtil.setAdress(list.get(0));
+                                                }
+                                            }
+                                        }
+                                    });
+                                    finish();
                                 }else{
                                     Toast.makeText(LoginActivity0.this,"密码错误，请重新输入",Toast.LENGTH_LONG).show();
                                 }
@@ -74,6 +91,7 @@ public class LoginActivity0 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Router.navTo("/login/register");
+                finish();
             }
         });
 

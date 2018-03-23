@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/bg_white">
+    android:layout_height="wrap_content">
 
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="fitXY" />
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"/>
 
     <TextView
         android:id="@+id/name"
@@ -17,7 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
         android:text="邓莹莹"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:paddingHorizontal="20dp"
+        android:background="@color/bg_white"/>
 
     <TextView
         android:id="@+id/rental_price"
@@ -27,13 +28,21 @@
         android:text="1200"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:paddingHorizontal="20dp"
+        android:background="@color/bg_white"/>
 
     <TextView
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rental_price"
-        android:text="12000000" />
+        android:text="12000000"
+        android:paddingHorizontal="20dp"
+        android:background="@color/bg_white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@+id/price"/>
 
 </RelativeLayout>

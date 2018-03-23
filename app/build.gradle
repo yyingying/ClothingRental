@@ -61,6 +61,7 @@ dependencies {
     compile('com.alibaba.android:vlayout:1.2.12@aar'){
         transitive = true
     }
+    compile 'com.bigkoo:pickerview:2.0.8'
 }
 
 repositories {

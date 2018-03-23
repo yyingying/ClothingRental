@@ -32,6 +32,7 @@ public class Goods extends BmobObject implements Parcelable {
     private BmobFile photo;
     private String place;
 
+
     public Goods() {
     }
 

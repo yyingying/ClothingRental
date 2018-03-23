@@ -5,10 +5,19 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Bundle;
 
+import java.util.List;
+
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import clothing_rental.canceline.com.clothingrental.data_base.Adress;
+import clothing_rental.canceline.com.clothingrental.data_base.Person;
+import clothing_rental.canceline.com.clothingrental.login.ui.LoginUtil;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobBatch;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 public class InitialActivity extends BaseActivity {
 
@@ -19,21 +28,31 @@ public class InitialActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_innitial);
 
-        SharedPreferences preferences = getSharedPreferences("first_open",MODE_PRIVATE);
-        boolean isFirstIn = preferences.getBoolean("is_first_open", true);
+//        SharedPreferences preferences = getSharedPreferences("first_open",MODE_PRIVATE);
+//        boolean isFirstIn = preferences.getBoolean("is_first_open", true);
+//
+//        if (isFirstIn)
+//        {
+//            //第一次进入时先把first_open置为false以便后来进入时进行判断，除此之外，还可以写入第一次进入时苏要执行的动作
+//            preferences = getSharedPreferences("first_open", MODE_PRIVATE);
+//            SharedPreferences.Editor editor = preferences.edit();
+//            editor.putBoolean("is_first_open", false);
+//            editor.commit();
+//            mainThread.postDelayed(delayToLogin, 2000);
+//
+//        }
+//        else {
+//            mainThread.postDelayed(delayToMain, 2000);}
 
-        if (isFirstIn)
+        boolean isLogin = LoginUtil.isLogin();
+        if (isLogin)
         {
-            //第一次进入时先把first_open置为false以便后来进入时进行判断，除此之外，还可以写入第一次进入时苏要执行的动作
-            preferences = getSharedPreferences("first_open", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("is_first_open", false);
-            editor.commit();
-            mainThread.postDelayed(delayToLogin, 2000);
+            mainThread.postDelayed(delayToMain, 2000);
 
         }
         else {
-            mainThread.postDelayed(delayToMain, 2000);}
+            mainThread.postDelayed(delayToLogin, 2000);}
+
     }
     //获得sharedPreference对象
     //对数据实现增删改查

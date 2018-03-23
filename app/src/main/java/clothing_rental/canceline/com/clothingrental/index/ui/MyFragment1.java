@@ -68,6 +68,7 @@ public class MyFragment1 extends BaseFragment {
         //do what u want to do
         ARouter.getInstance().build("/details/DetailsActivity")
                 .withParcelable("Good", good)
+                .withString("goodsObjectID",good.getObjectId())
                 .navigation(getContext());
     }
 

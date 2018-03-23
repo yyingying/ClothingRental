@@ -1,11 +1,12 @@
 package clothing_rental.canceline.com.clothingrental.details;
-
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -20,9 +21,18 @@ import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import clothing_rental.canceline.com.clothingrental.data_base.Favourite;
 import clothing_rental.canceline.com.clothingrental.data_base.Goods;
+import clothing_rental.canceline.com.clothingrental.data_base.Order;
 import clothing_rental.canceline.com.clothingrental.login.ui.LoginActivity0;
+import clothing_rental.canceline.com.clothingrental.login.ui.LoginUtil;
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by kingShin on 2018/3/14.
@@ -31,13 +41,20 @@ import cn.bmob.v3.datatype.BmobFile;
 @Route(path = "/details/DetailsActivity")
 public class DetailsActivity extends BaseActivity {
     private RecyclerView mRecyclerViews;
-    private Data mDatas;
     private FragmentManager fragmentManager;
+    private Button clo_btn;
+    private ImageView imageView;
+    private Button rental_btn;
+    private Boolean pressFlag;
+    private String objectID;
 
     //Goods goods = new Goods();
 
     @Autowired(name = "Good")
     Goods goods;
+
+    @Autowired(name = "goodsObjectID")
+    String goodsObjectID;
 
 
     @Override
@@ -45,15 +62,91 @@ public class DetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-//        Toast.makeText(DetailsActivity.this,goods.getName(),Toast.LENGTH_LONG).show();
+        clo_btn = findViewById(R.id.closeBtn);
+        clo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-        //inject
-        //初始化数
-        //initData("1234",5,1001,"5678",16,1);
+        BmobQuery<Favourite> favouriteBmobQuery = new BmobQuery<>();
+        favouriteBmobQuery.addWhereEqualTo("favouriteID",LoginUtil.getPersonID()+goods.getGoodsID().toString());
+        favouriteBmobQuery.findObjects(new FindListener<Favourite>() {
+            @Override
+            public void done(List<Favourite> list, BmobException e) {
+                if (e==null){
+                    if(list.size()==0){
+                        imageView.setBackgroundResource(R.drawable.un_favourite);
+                        pressFlag = false;
+                    }
+                    imageView.setBackgroundResource(R.drawable.is_favourite);
+                    pressFlag = true;
+                    objectID = list.get(0).getObjectId();
+                }
+            }
+        });
 
-//        Toast.makeText(DetailsActivity.this,goods.getName(), Toast.LENGTH_LONG).show();
-//        init(goods);
-//        Toast.makeText(DetailsActivity.this, goods.getName(), Toast.LENGTH_LONG).show();
+//        BmobQuery<Order> orderBmobQuery = new BmobQuery<>();
+//        orderBmobQuery.addWhereEqualTo("orderID",LoginUtil.getPersonID()+goods.getGoodsID().toString());
+//        orderBmobQuery.findObjects(new FindListener<Order>() {
+//            @Override
+//            public void done(List<Order> list, BmobException e) {
+//                if(e==null){
+//                    if(list.size()!= 0){
+//                        rental_btn.setClickable(false);
+//                        rental_btn.setBackgroundResource(R.drawable.btn_rental_unclickable);
+//                    }
+//                }
+//            }
+//        });
+
+        imageView = findViewById(R.id.favouriteImageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(pressFlag == false){
+                    imageView.setBackgroundResource(R.drawable.is_favourite);
+                    Favourite favourite = new Favourite();
+                    favourite.setFavouriteID(LoginUtil.getPersonID()+goods.getGoodsID().toString());
+                    favourite.setPersonID(LoginUtil.getPersonID());
+                    favourite.setGoodSID(goods.getGoodsID());
+                    favourite.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if (e==null){
+                                Toast.makeText(DetailsActivity.this,"success",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                    pressFlag = true;
+                }else{
+                    imageView.setBackgroundResource(R.drawable.un_favourite);
+                    Favourite favourite1 = new Favourite();
+                    favourite1.setObjectId(objectID);
+                    favourite1.delete(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e==null){
+                                Toast.makeText(DetailsActivity.this,"delect.success",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                    pressFlag = false;
+                }
+            }
+        });
+
+        rental_btn = findViewById(R.id.rentalButton);
+        rental_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/details/rental/RentalActivity")
+                        .withParcelable("Good",goods)
+                        .withString("goodsObjectID",goodsObjectID)
+                        .navigation(getContext());
+            }
+        });
         //得到控件
         mRecyclerViews = findViewById(R.id.recycle_view);
         //设置布局管理器
@@ -77,13 +170,21 @@ public class DetailsActivity extends BaseActivity {
         delegateAdapter.notifyDataSetChanged();
 }
 
-//    private void initData(String name,Integer Stock,Integer id,String place,Integer price,Integer price2)
-//    {
-//        goods.setName(name);
-//        goods.setStock(Stock);
-//        goods.setGoodsID(id);
-//        goods.setPlace(place);
-//        goods.setPrice(price);
-//        goods.setRental_price(price2);
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        BmobQuery<Order> orderBmobQuery = new BmobQuery<>();
+        orderBmobQuery.addWhereEqualTo("orderID",LoginUtil.getPersonID()+goods.getGoodsID().toString());
+        orderBmobQuery.findObjects(new FindListener<Order>() {
+            @Override
+            public void done(List<Order> list, BmobException e) {
+                if(e==null){
+                    if(list.size()!= 0){
+                        rental_btn.setClickable(false);
+                        rental_btn.setBackgroundResource(R.drawable.btn_rental_unclickable);
+                    }
+                }
+            }
+        });
+    }
 }

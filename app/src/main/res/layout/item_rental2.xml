@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/unAdress"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/bg_white">
+        <Button
+            android:id="@+id/addAdressButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white"
+            android:drawableTop="@drawable/plus"
+            android:text="输入收获地址"
+            android:paddingVertical="25dp"/>
+
+        <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line"
+        android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/adress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bg_white">
+        <TextView
+            android:id="@+id/personNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="邓莹莹"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"/>
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15626486721"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"/>
+        <TextView
+            android:id="@+id/adressTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="广东省广州市荔湾区"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/btn_red_round"
+            android:text="地址管理" />
+    </LinearLayout>
+
+
+</RelativeLayout>
+

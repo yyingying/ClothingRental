@@ -1,13 +1,14 @@
 package clothing_rental.canceline.com.clothingrental.details;
 
-import android.app.DialogFragment;
+
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;

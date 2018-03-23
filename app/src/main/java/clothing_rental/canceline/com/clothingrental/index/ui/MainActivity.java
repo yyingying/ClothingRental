@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import clothing_rental.canceline.com.clothingrental.R;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
+import clothing_rental.canceline.com.clothingrental.mine.CacheActivity;
 
 @Route(path = "/main/index")
 public class MainActivity extends BaseActivity {
@@ -19,6 +20,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!CacheActivity.activityList.contains(MainActivity.this)){
+            CacheActivity.addActivity(MainActivity.this);
+        }
 
         vpager = findViewById(R.id.vpager);
         RadioGroup group = findViewById(R.id.rg_tab_bar);

@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:background="@color/bg_white"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp">
 
     <TextView
+        android:id="@+id/shangpinxinxi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="商品信息"
         android:textSize="20dp"
         android:textColor="#000000"
-        android:layout_marginTop="20dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"/>
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:id="@+id/shangpinbianhao"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/shangpinxinxi">
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -32,13 +36,14 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"
-        ></View>
+        android:layout_below="@+id/shangpinbianhao" />
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
+        android:id="@+id/xinpinjia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/shangpinbianhao"
+        android:layout_marginVertical="5dp">
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -53,13 +58,14 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"
-        ></View>
+        android:layout_below="@+id/xinpinjia"/>
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
+        android:id="@+id/chandi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/xinpinjia"
+        android:layout_marginVertical="5dp">
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -74,6 +80,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"
-        ></View>
+        android:layout_below="@+id/chandi"/>
 
-</LinearLayout>
+</RelativeLayout>

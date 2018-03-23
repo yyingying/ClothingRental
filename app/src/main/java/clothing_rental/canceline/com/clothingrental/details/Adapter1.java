@@ -41,8 +41,8 @@ public class Adapter1 extends DelegateAdapter.Adapter<Adapter1.MyHolder> {
     public void onBindViewHolder(Adapter1.MyHolder holder, int position) {
         Glide.with(mContext).load(aUrl).into(holder.imageView_photo);
         holder.textView_name.setText(aName);
-        holder.textView_price.setText(String.valueOf(aPrice) + "/天");
-        holder.textView_rprice.setText("新品价：" + String.valueOf(aRental_price));
+        holder.textView_price.setText("新品价：" +String.valueOf(aPrice));
+        holder.textView_rprice.setText(String.valueOf(aRental_price+ "/天"));
     }
 
     @Override
