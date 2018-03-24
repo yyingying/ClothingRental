@@ -12,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alibaba.android.vlayout.DelegateAdapter;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -38,7 +41,8 @@ import static android.support.v7.widget.StaggeredGridLayoutManager.VERTICAL;
 
 public class MyFragment2 extends Fragment {
     private RecyclerView recyclerView2;
-    private MyFragment2.MyAdaper mAdaper2;
+    private VirtualLayoutManager virtualLayoutManager;
+    private DelegateAdapter delegateAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,83 +53,21 @@ public class MyFragment2 extends Fragment {
 
     private void initView(View view) {
         recyclerView2 = view.findViewById(R.id.recyclerView2);
-        recyclerView2.setAdapter(mAdaper2 = new MyFragment2.MyAdaper());
-        recyclerView2.setLayoutManager(new StaggeredGridLayoutManager(2, VERTICAL));
+        recyclerView2.setLayoutManager(virtualLayoutManager = new VirtualLayoutManager(getContext()));
+        recyclerView2.setAdapter(delegateAdapter = new DelegateAdapter(virtualLayoutManager));
 
         BmobQuery<Goods> goodsBmobQuery = new BmobQuery<>();
         goodsBmobQuery.addWhereExists("objectId");
-        goodsBmobQuery.setLimit(6);
         goodsBmobQuery.findObjects(new FindListener<Goods>() {
             @Override
             public void done(List<Goods> list, BmobException e) {
-                if (e==null){
-//                    for (int i=0;i<6;i++){
-//                        mAdaper.addData(new Item(list.get(0).getPhoto().getUrl(), list.get(0).getGoodsID()));
-//                    }
-
-//                    mAdaper2.addData(Arrays.asList(
-//                            new Item(list.get(0).getPhoto().getUrl(), list.get(0).getGoodsID()),
-//                            new Item(list.get(1).getPhoto().getUrl(), list.get(1).getGoodsID()),
-//                            new Item(list.get(2).getPhoto().getUrl(), list.get(2).getGoodsID()),
-//                            new Item(list.get(3).getPhoto().getUrl(), list.get(3).getGoodsID()),
-//                            new Item(list.get(4).getPhoto().getUrl(), list.get(4).getGoodsID()),
-//                            new Item(list.get(5).getPhoto().getUrl(), list.get(5).getGoodsID())
-//                    ));
-//                    mAdaper2.notifyDataSetChanged();
+                if (e == null) {
+                    Toast.makeText(getActivity(), "sucess", Toast.LENGTH_LONG).show();
+                    delegateAdapter.clear();
+                    delegateAdapter.addAdapter(new GoodsAdapter(list,getContext()));
+                    delegateAdapter.notifyDataSetChanged();
                 }
             }
         });
-    }
-
-    class MyAdaper extends RecyclerView.Adapter<MyFragment2.MyAdaper.MyHolder> {
-
-        private List<Item> datas = new ArrayList<>();
-
-        public void addData(List<Item> datas) {
-            this.datas.addAll(datas);
-        }
-
-        public void addData(Item data) {
-            this.datas.add(data);
-        }
-
-        @Override
-        public MyFragment2.MyAdaper.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.item_layout_fragment1, null);
-            return new MyFragment2.MyAdaper.MyHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final MyFragment2.MyAdaper.MyHolder holder, int position) {
-            Item data = datas.get(position);
-            holder.title.setText(data.getTitle());
-            Glide.with(getContext()).load(data.getUrl()).into(new SimpleTarget<GlideDrawable>() {
-                @Override
-                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                    holder.image.setImageDrawable(resource);
-                }
-
-                @Override
-                public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                    super.onLoadFailed(e, errorDrawable);
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return datas.size();
-        }
-
-        class MyHolder extends RecyclerView.ViewHolder {
-            TextView title;
-            ImageView image;
-
-            public MyHolder(View itemView) {
-                super(itemView);
-                title = itemView.findViewById(R.id.titleText);
-                image = itemView.findViewById(R.id.imageView);
-            }
-        }
     }
 }

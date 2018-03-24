@@ -67,21 +67,21 @@ public class MyFragment3 extends Fragment {
             }
         });
 
-        btn_openCertification = view.findViewById(R.id.certification_btn);
-        btn_openCertification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Router.navTo("/mine/Certification");
-            }
-        });
+//        btn_openCertification = view.findViewById(R.id.certification_btn);
+//        btn_openCertification.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Router.navTo("/mine/Certification");
+//            }
+//        });
 
-        btn_openGingeCertification = view.findViewById(R.id.gingeCertification_btn);
-        btn_openGingeCertification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Router.navTo("/mine/GingeCertification");
-            }
-        });
+//        btn_openGingeCertification = view.findViewById(R.id.gingeCertification_btn);
+//        btn_openGingeCertification.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Router.navTo("/mine/GingeCertification");
+//            }
+//        });
 
         btn_openQuestion = view.findViewById(R.id.question_btn);
         btn_openQuestion.setOnClickListener(new View.OnClickListener() {

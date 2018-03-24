@@ -42,20 +42,20 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:layout_marginRight="10dp"/>
-        <TextView
-            android:id="@+id/user_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="用户名"
-            android:layout_toRightOf="@+id/head_view"
-            android:layout_marginTop="60dp" />
+        <!--<TextView-->
+            <!--android:id="@+id/user_text"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="用户名"-->
+            <!--android:layout_toRightOf="@+id/head_view"-->
+            <!--android:layout_marginTop="60dp" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="积分:"
-            android:layout_toRightOf="@+id/head_view"
-            android:layout_below="@+id/user_text"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="积分:"-->
+            <!--android:layout_toRightOf="@+id/head_view"-->
+            <!--android:layout_below="@+id/user_text"/>-->
 
     </RelativeLayout>
 
@@ -123,30 +123,44 @@
         <View
             style="@style/line"
             android:layout_marginLeft="40dp"/>
+        <!--<Button-->
+            <!--android:id="@+id/certification_btn"-->
+            <!--android:drawableLeft="@mipmap/certification"-->
+            <!--android:text="身份认证"-->
+            <!--style="@style/mine_below_button"-->
+            <!--/>-->
+        <!--<View-->
+            <!--style="@style/line"-->
+            <!--android:layout_marginLeft="40dp"/>-->
+        <!--<Button-->
+            <!--android:id="@+id/gingeCertification_btn"-->
+            <!--android:drawableLeft="@mipmap/ginge_certification"-->
+            <!--android:text="芝麻认证"-->
+            <!--style="@style/mine_below_button"-->
+            <!--/>-->
+        <!--<View-->
+            <!--style="@style/line"-->
+            <!--android:layout_marginLeft="40dp"/>-->
+
         <Button
-            android:id="@+id/certification_btn"
-            android:drawableLeft="@mipmap/certification"
-            android:text="身份认证"
-            style="@style/mine_below_button"
-            />
+        android:id="@+id/gingeCertification_btn"
+        android:drawableLeft="@mipmap/ginge_certification"
+        android:text="地址管理"
+        style="@style/mine_below_button"
+        />
         <View
-            style="@style/line"
-            android:layout_marginLeft="40dp"/>
-        <Button
-            android:id="@+id/gingeCertification_btn"
-            android:drawableLeft="@mipmap/ginge_certification"
-            android:text="芝麻认证"
-            style="@style/mine_below_button"
-            />
-        <View
-            style="@style/line"
-            android:layout_marginLeft="40dp"/>
+        style="@style/line"
+        android:layout_marginLeft="40dp"/>
+
         <Button
             android:id="@+id/question_btn"
             android:drawableLeft="@mipmap/commonquestion"
             android:text="常见问题"
             style="@style/mine_below_button"
             />
+        <View
+            style="@style/line"
+            android:layout_marginLeft="40dp"/>
 
     </LinearLayout>
 

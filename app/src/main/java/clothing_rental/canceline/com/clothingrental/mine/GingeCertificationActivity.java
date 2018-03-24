@@ -19,14 +19,14 @@ public class GingeCertificationActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ginge_certification);
+        //setContentView(R.layout.activity_ginge_certification);
 
-        btn_exit = findViewById(R.id.exit_btn);
-        btn_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        btn_exit = findViewById(R.id.exit_btn);
+//        btn_exit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
     }
 }

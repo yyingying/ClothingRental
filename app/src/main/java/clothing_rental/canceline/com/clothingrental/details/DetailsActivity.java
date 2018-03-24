@@ -87,20 +87,6 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
-//        BmobQuery<Order> orderBmobQuery = new BmobQuery<>();
-//        orderBmobQuery.addWhereEqualTo("orderID",LoginUtil.getPersonID()+goods.getGoodsID().toString());
-//        orderBmobQuery.findObjects(new FindListener<Order>() {
-//            @Override
-//            public void done(List<Order> list, BmobException e) {
-//                if(e==null){
-//                    if(list.size()!= 0){
-//                        rental_btn.setClickable(false);
-//                        rental_btn.setBackgroundResource(R.drawable.btn_rental_unclickable);
-//                    }
-//                }
-//            }
-//        });
-
         imageView = findViewById(R.id.favouriteImageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

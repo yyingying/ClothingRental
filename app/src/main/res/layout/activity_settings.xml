@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_white">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,19 +28,29 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"/>
-    <Button
-        android:text="我的收货地址"
-        style="@style/mine_below_button"
-        />
-    <View
-        style="@style/line"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <Button
 
-        android:text="关于"
-        style="@style/mine_below_button"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginVertical="15dp"
+        android:paddingHorizontal="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="关于"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="版本号：1.1.2"
+            android:layout_alignParentRight="true"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+
     <View
         style="@style/line"
         android:layout_marginLeft="10dp"
@@ -53,11 +64,6 @@
         style="@style/line"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
-    <Button
-        android:id="@+id/new_btn"
-        android:text="更新图片"
-        style="@style/mine_below_button"
-        />
 
 
 </LinearLayout>

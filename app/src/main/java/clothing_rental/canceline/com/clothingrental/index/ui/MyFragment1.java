@@ -57,7 +57,7 @@ public class MyFragment1 extends BaseFragment {
                     Toast.makeText(getActivity(), "sucess", Toast.LENGTH_LONG).show();
                     mAdaper.clear();
                     mAdaper.addAdapter(new BannerAdapter());
-                    mAdaper.addAdapter(new GoodsAdapter(list));
+                    mAdaper.addAdapter(new GoodsAdapter(list,getContext()));
                     mAdaper.notifyDataSetChanged();
                 }
             }
@@ -104,52 +104,52 @@ public class MyFragment1 extends BaseFragment {
         }
     }
 
-    class GoodsAdapter extends DelegateAdapter.Adapter<GoodsAdapter.GoodsViewHolder> {
-
-        private final List<Goods> datas;
-
-        private GoodsAdapter(List<Goods> datas) {
-            this.datas = datas;
-        }
-
-        @Override
-        public LayoutHelper onCreateLayoutHelper() {
-            return new StaggeredGridLayoutHelper(2);
-        }
-
-        @Override
-        public GoodsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(getContext()).inflate(R.layout.item_layout_fragment1, parent, false);
-            return new GoodsViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final GoodsViewHolder holder, int position) {
-            final Goods data = datas.get(position);
-            holder.title.setText(String.valueOf(data.getGoodsID()));
-            Glide.with(getContext()).load(data.getPhoto().getUrl()).into(holder.image);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClick(data, holder.getAdapterPosition());
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return datas.size();
-        }
-
-        class GoodsViewHolder extends RecyclerView.ViewHolder {
-            TextView title;
-            ImageView image;
-
-            GoodsViewHolder(View itemView) {
-                super(itemView);
-                title = itemView.findViewById(R.id.titleText);
-                image = itemView.findViewById(R.id.imageView);
-            }
-        }
-    }
+//    class GoodsAdapter extends DelegateAdapter.Adapter<GoodsAdapter.GoodsViewHolder> {
+//
+//        private final List<Goods> datas;
+//
+//        private GoodsAdapter(List<Goods> datas) {
+//            this.datas = datas;
+//        }
+//
+//        @Override
+//        public LayoutHelper onCreateLayoutHelper() {
+//            return new StaggeredGridLayoutHelper(2);
+//        }
+//
+//        @Override
+//        public GoodsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            View view = LayoutInflater.from(getContext()).inflate(R.layout.item_layout_fragment1, parent, false);
+//            return new GoodsViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(final GoodsViewHolder holder, int position) {
+//            final Goods data = datas.get(position);
+//            holder.title.setText(String.valueOf(data.getGoodsID()));
+//            Glide.with(getContext()).load(data.getPhoto().getUrl()).into(holder.image);
+//            holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    onItemClick(data, holder.getAdapterPosition());
+//                }
+//            });
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return datas.size();
+//        }
+//
+//        class GoodsViewHolder extends RecyclerView.ViewHolder {
+//            TextView title;
+//            ImageView image;
+//
+//            GoodsViewHolder(View itemView) {
+//                super(itemView);
+//                title = itemView.findViewById(R.id.titleText);
+//                image = itemView.findViewById(R.id.imageView);
+//            }
+//        }
+//    }
 }

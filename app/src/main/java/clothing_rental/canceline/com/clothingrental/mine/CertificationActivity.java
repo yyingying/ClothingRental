@@ -20,14 +20,14 @@ public class CertificationActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_certification);
-
-        btn_exit = findViewById(R.id.exit_btn);
-        btn_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        setContentView(R.layout.activity_certification);
+//
+//        btn_exit = findViewById(R.id.exit_btn);
+//        btn_exit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
     }
 }
