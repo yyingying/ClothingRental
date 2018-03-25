@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/bg_white">
+        <LinearLayout
+            android:background="@color/bg_white"
+            android:id="@+id/layout_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true">
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收件人：邓莹莹"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:paddingVertical="5dp"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:id="@+id/phoneTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系方式：15626486721"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:paddingVertical="5dp"
+                android:paddingLeft="20dp"/>
+            <TextView
+                android:id="@+id/placeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址：广东省广州市荔湾区龙溪中路6号裕民坊"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:paddingVertical="5dp"
+                android:paddingLeft="20dp"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/cancelImageView"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cha"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+</LinearLayout>
