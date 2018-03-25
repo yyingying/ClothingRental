@@ -1,13 +1,12 @@
 package clothing_rental.canceline.com.clothingrental.details;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
@@ -28,7 +27,7 @@ public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
     private Context mContext;
     private FragmentManager mFragmentManager;
 
-    public Adapter2(FragmentManager fragmentManager,Context context) {
+    public Adapter2(FragmentManager fragmentManager, Context context) {
         super();
         mContext = context;
         mFragmentManager = fragmentManager;
@@ -48,11 +47,11 @@ public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
         Adapter2.MyHolder holder = new Adapter2.MyHolder(view);
 
         final MyDialogFragment myDialogFragment = new MyDialogFragment();
-        layout1 = (RelativeLayout)view.findViewById(R.id.layout_1);
+        layout1 = (RelativeLayout) view.findViewById(R.id.layout_1);
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myDialogFragment.show(mFragmentManager,"dialog_fragment");
+                myDialogFragment.show(mFragmentManager, "dialog_fragment");
             }
         });
 
