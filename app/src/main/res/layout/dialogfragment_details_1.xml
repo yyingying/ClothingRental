@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg_white">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -10,12 +11,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="免押金"
+            android:text="运费"
             android:textSize="22sp"
             android:gravity="center_horizontal"
             android:layout_marginVertical="5dp"
             />
         <ImageView
+            android:id="@+id/closeImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@mipmap/left"/>
@@ -28,20 +30,82 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="芝麻信用认证可免押金租衣!"
+        android:text="运费统一采用顺丰邮寄方式，买家自付邮费"
         android:textSize="18sp"
         android:gravity="center_horizontal"
         android:layout_marginVertical="40dp"/>
-    <Button
-        android:id="@+id/gingeCertification_btn"
-        android:layout_width="300dp"
+
+    <TableLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_red_round"
-        android:text="立即芝麻认证"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:paddingBottom="40dp">
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:padding="3dp">
+            <TextView
+                android:text="邮寄公司"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"
+                android:layout_marginRight="3dp"/>
+            <TextView
+                android:text="顺丰速运"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"/>
+        </TableRow>
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:paddingBottom="3dp">
+            <TextView
+                android:text="寄出运费"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"
+                android:layout_marginRight="3dp"/>
+            <TextView
+                android:text="10元"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"/>
+        </TableRow>
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:paddingBottom="3dp">
+            <TextView
+                android:text="寄回运费"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"
+                android:layout_marginRight="3dp"/>
+            <TextView
+                android:text="10元"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:paddingHorizontal="20sp"
+                android:paddingVertical="5dp"/>
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

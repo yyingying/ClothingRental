@@ -29,6 +29,7 @@ public class Order extends BmobObject implements Parcelable {
     private String phone;
     private String address;
     private Goods goods;
+    private Integer weight;//1代表未发货 2代表在路上 3代表到达
 
     public Order(){
 
@@ -42,6 +43,7 @@ public class Order extends BmobObject implements Parcelable {
         this.phone = in.readString();
         this.address = in.readString();
         this.goods = (Goods)in.readSerializable();
+        this.weight = in.readInt();
     }
 
     public String getOrderID() {
@@ -84,6 +86,7 @@ public class Order extends BmobObject implements Parcelable {
         parcel.writeString(this.phone);
         parcel.writeString(this.address);
         parcel.writeSerializable(this.goods);
+        parcel.writeInt(this.weight);
     }
 
     public Goods getGoods() {
@@ -116,5 +119,13 @@ public class Order extends BmobObject implements Parcelable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

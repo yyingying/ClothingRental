@@ -1,5 +1,7 @@
 package clothing_rental.canceline.com.clothingrental.details;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,11 +19,13 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
+import clothing_rental.canceline.com.clothingrental.base.util.Router;
 import clothing_rental.canceline.com.clothingrental.base.widget.BaseActivity;
 import clothing_rental.canceline.com.clothingrental.data_base.Favourite;
 import clothing_rental.canceline.com.clothingrental.data_base.Goods;
 import clothing_rental.canceline.com.clothingrental.data_base.Order;
 import clothing_rental.canceline.com.clothingrental.login.ui.LoginUtil;
+import clothing_rental.canceline.com.clothingrental.mine.CacheActivity;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -60,67 +64,75 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
-        BmobQuery<Favourite> favouriteBmobQuery = new BmobQuery<>();
-        favouriteBmobQuery.addWhereEqualTo("favouriteID", LoginUtil.getPersonID() + goods.getGoodsID().toString());
-        favouriteBmobQuery.findObjects(new FindListener<Favourite>() {
-            @Override
-            public void done(List<Favourite> list, BmobException e) {
-                if (e == null) {
-                    if (list.size() == 0) {
-                        imageView.setBackgroundResource(R.drawable.un_favourite);
-                        pressFlag = false;
-                    }
-                    imageView.setBackgroundResource(R.drawable.is_favourite);
-                    pressFlag = true;
-                    objectID = list.get(0).getObjectId();
-                }
-            }
-        });
 
         imageView = findViewById(R.id.favouriteImageView);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!pressFlag) {
-                    imageView.setBackgroundResource(R.drawable.is_favourite);
-                    Favourite favourite = new Favourite();
-                    favourite.setFavouriteID(LoginUtil.getPersonID() + goods.getGoodsID().toString());
-                    favourite.setPersonID(LoginUtil.getPersonID());
-                    favourite.setGoodSID(goods.getGoodsID());
-                    favourite.save(new SaveListener<String>() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(DetailsActivity.this, "success", Toast.LENGTH_LONG).show();
-                            }
+        if(LoginUtil.isLogin()==false){
+            imageView.setBackgroundResource(R.drawable.un_favourite);
+        }else {
+            BmobQuery<Favourite> favouriteBmobQuery = new BmobQuery<>();
+            favouriteBmobQuery.addWhereEqualTo("favouriteID", LoginUtil.getPersonID() + goods.getGoodsID().toString());
+            favouriteBmobQuery.findObjects(new FindListener<Favourite>() {
+                @Override
+                public void done(List<Favourite> list, BmobException e) {
+                    if (e == null) {
+                        if (list.size() == 0) {
+                            imageView.setBackgroundResource(R.drawable.un_favourite);
+                            pressFlag = false;
                         }
-                    });
-                    pressFlag = true;
-                } else {
-                    imageView.setBackgroundResource(R.drawable.un_favourite);
-                    Favourite favourite1 = new Favourite();
-                    favourite1.setObjectId(objectID);
-                    favourite1.delete(new UpdateListener() {
-                        @Override
-                        public void done(BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(DetailsActivity.this, "delect.success", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-                    pressFlag = false;
+                        imageView.setBackgroundResource(R.drawable.is_favourite);
+                        pressFlag = true;
+                        objectID = list.get(0).getObjectId();
+                    }
                 }
-            }
-        });
+            });
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!pressFlag) {
+                        imageView.setBackgroundResource(R.drawable.is_favourite);
+                        Favourite favourite = new Favourite();
+                        favourite.setFavouriteID(LoginUtil.getPersonID() + goods.getGoodsID().toString());
+                        favourite.setPersonID(LoginUtil.getPersonID());
+                        favourite.setGoodSID(goods.getGoodsID());
+                        favourite.save(new SaveListener<String>() {
+                            @Override
+                            public void done(String s, BmobException e) {
+                                if (e == null) {
+                                    Toast.makeText(DetailsActivity.this, "success", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                        pressFlag = true;
+                    } else {
+                        imageView.setBackgroundResource(R.drawable.un_favourite);
+                        Favourite favourite1 = new Favourite();
+                        favourite1.setObjectId(objectID);
+                        favourite1.delete(new UpdateListener() {
+                            @Override
+                            public void done(BmobException e) {
+                                if (e == null) {
+                                    Toast.makeText(DetailsActivity.this, "delect.success", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                        pressFlag = false;
+                    }
+                }
+            });
+        }
 
         rental_btn = findViewById(R.id.rentalButton);
         rental_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build("/details/rental/RentalActivity")
-                        .withParcelable("Good", goods)
-                        .withString("goodsObjectID", goodsObjectID)
-                        .navigation(getContext());
+                if(LoginUtil.isLogin()==false){
+                    showdialog(view);
+                }else {
+                    ARouter.getInstance().build("/details/rental/RentalActivity")
+                            .withParcelable("Good", goods)
+                            .withString("goodsObjectID", goodsObjectID)
+                            .navigation(getContext());
+                }
             }
         });
         //得到控件
@@ -163,4 +175,27 @@ public class DetailsActivity extends BaseActivity {
             }
         });
     }
+
+    public void showdialog(View view){
+        AlertDialog.Builder alertdialogbuider = new AlertDialog.Builder(getContext());
+        alertdialogbuider.setMessage("租赁商品前需要登录，是否跳转到登录界面？");
+        alertdialogbuider.setPositiveButton("确定",click1);
+        alertdialogbuider.setNegativeButton("取消",click2);
+        AlertDialog alertDialog1 = alertdialogbuider.create();
+        alertDialog1.show();
+    }
+
+    private DialogInterface.OnClickListener click1 = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            CacheActivity.finishActivity();
+            Router.navTo("/login/input");
+        }
+    };
+    private DialogInterface.OnClickListener click2 = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            dialogInterface.cancel();
+        }
+    };
 }

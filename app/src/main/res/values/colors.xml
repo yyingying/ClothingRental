@@ -6,4 +6,5 @@
     <color name="bg_white">#f9f9f9</color>
     <color name="gray">#f8e0e0</color>
     <color name="black">#000000</color>
+    <color name="transprent">@android:color/transparent</color>
 </resources>

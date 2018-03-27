@@ -61,19 +61,21 @@ public class FavouriteActivity extends Activity {
         final DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager);
         mRecyclerView.setAdapter(delegateAdapter);
 
-        BmobQuery<Favourite> favouriteBmobQuery = new BmobQuery<>();
-        favouriteBmobQuery.addWhereEqualTo("personID", LoginUtil.getPerson().getAccount());
-        favouriteBmobQuery.findObjects(new FindListener<Favourite>() {
-            @Override
-            public void done(List<Favourite> list, BmobException e) {
-                if (e == null) {
-                    Toast.makeText(FavouriteActivity.this, "sucess", Toast.LENGTH_LONG).show();
-                    delegateAdapter.addAdapter(new ItemAdapter(list));
-                    delegateAdapter.notifyDataSetChanged();
-                }
+        if (LoginUtil.isLogin()==true){
+            BmobQuery<Favourite> favouriteBmobQuery = new BmobQuery<>();
+            favouriteBmobQuery.addWhereEqualTo("personID", LoginUtil.getPerson().getAccount());
+            favouriteBmobQuery.findObjects(new FindListener<Favourite>() {
+                @Override
+                public void done(List<Favourite> list, BmobException e) {
+                    if (e == null) {
+                        Toast.makeText(FavouriteActivity.this, "sucess", Toast.LENGTH_LONG).show();
+                        delegateAdapter.addAdapter(new ItemAdapter(list));
+                        delegateAdapter.notifyDataSetChanged();
+                    }
 
-            }
-        });
+                }
+            });
+        }
     }
 
      class ItemAdapter extends DelegateAdapter.Adapter<ItemViewHolder> {

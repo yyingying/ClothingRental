@@ -35,6 +35,7 @@ public class LoginActivity0 extends AppCompatActivity {
     private Button Register_btn;
     private TextView agreement;
     private Boolean test;
+    private TextView visitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,6 @@ public class LoginActivity0 extends AppCompatActivity {
             public void onClick(View view) {
                 account_editxt = (EditText)findViewById(R.id.userNameEditText);
                 password_editxt = (EditText)findViewById(R.id.passwordEditText);
-                test = account_editxt.getText().toString().equals(password_editxt.getText().toString());
 
                 BmobQuery<Person> bmobQuery = new BmobQuery<Person>();
                 bmobQuery.addWhereEqualTo("account",account_editxt.getText().toString());
@@ -55,6 +55,7 @@ public class LoginActivity0 extends AppCompatActivity {
                     @Override
                     public void done(List<Person> list, BmobException e) {
                         if(e==null){
+                            test = password_editxt.getText().toString().equals(list.get(0).getPassword());
                             if(list.size()==0){
                                 Toast.makeText(LoginActivity0.this,"用户名不存在，请确认输入或注册",Toast.LENGTH_LONG).show();
                             }else{
@@ -77,7 +78,7 @@ public class LoginActivity0 extends AppCompatActivity {
                                     });
                                     finish();
                                 }else{
-                                    Toast.makeText(LoginActivity0.this,"密码错误，请重新输入",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity0.this,"密码错误，请重 新输入",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -100,6 +101,15 @@ public class LoginActivity0 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Router.navTo("/login/agreement");
+            }
+        });
+
+        visitor = findViewById(R.id.visitorTextView);
+        visitor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Router.navTo("/main/index");
+                finish();
             }
         });
     }

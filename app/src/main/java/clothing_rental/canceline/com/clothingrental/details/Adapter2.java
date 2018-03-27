@@ -1,11 +1,18 @@
 package clothing_rental.canceline.com.clothingrental.details;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -21,8 +28,6 @@ import clothing_rental.canceline.com.clothingrental.R;
 public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
 
     private RelativeLayout layout1;
-    //private RelativeLayout layout2;
-    //private RelativeLayout layout3;
 
     private Context mContext;
     private FragmentManager mFragmentManager;
@@ -54,7 +59,6 @@ public class Adapter2 extends DelegateAdapter.Adapter<Adapter2.MyHolder> {
                 myDialogFragment.show(mFragmentManager, "dialog_fragment");
             }
         });
-
         return holder;
     }
 

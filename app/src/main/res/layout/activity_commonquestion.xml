@@ -24,6 +24,69 @@
             android:textSize="20dp"
             android:background="@color/bg_white"/>
     </FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="1、押金什么时候可以退？"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="租赁过程中，押金将会被冻结，直到宝贝归还，订单完成后，押金会自动返回到您的押金账户中，可以作为下次租赁的押金使用，您也可以在“我的” - “我的押金”退还。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="2、租赁过程中损坏怎么办？"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="从押金中扣除相应的金额。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="3、配件丢失会扣押金吗？"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="配件丢失按价格从押金中扣除；防尘袋丢失将会扣除押金100元。请妥善保管附件。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="4、可以逾期归还吗？"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:lineSpacingExtra="7dp"
+                android:text="若超期未归还宝贝，将被视为违约。每天将被扣除逾期费用。
+逾期7天以内：逾期费为租赁金额的2倍/天
+逾期7天以外：逾期费为商品买断价格的1%/天
+逾期30天以上：将被视为严重违约，将扣除所有押金，并保留向法院起诉和追讨的权利。
+某些商品（如：特殊活动商品）逾期费用较高，具体详询客服。"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <View
     android:layout_width="match_parent"

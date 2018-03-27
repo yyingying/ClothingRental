@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import clothing_rental.canceline.com.clothingrental.R;
@@ -43,6 +46,11 @@ import cn.bmob.v3.listener.FindListener;
 public class OrdersActivity extends Activity {
     private Button btn_exit;
     private RecyclerView oRecyclerView;
+    private RadioButton not_btn;
+    private RadioButton onWay_btn;
+    private RadioButton reach_btn;
+    private DelegateAdapter delegateAdapter;
+    private List<Order> orders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +71,97 @@ public class OrdersActivity extends Activity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         oRecyclerView.setLayoutManager(layoutManager);
 
-        final DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager);
+        delegateAdapter = new DelegateAdapter(layoutManager);
         oRecyclerView.setAdapter(delegateAdapter);
 
-        //查找数据
-        BmobQuery<Order> orderBmobQuery = new BmobQuery<>();
-        orderBmobQuery.addWhereEqualTo("personID", LoginUtil.getPersonID());
-        orderBmobQuery.include("goods");
-        orderBmobQuery.findObjects(new FindListener<Order>() {
-            @Override
-            public void done(List<Order> list, BmobException e) {
-                if(e==null){
-                    Toast.makeText(OrdersActivity.this,"find.sucess",Toast.LENGTH_LONG).show();
-                    //设置适配器
-                    delegateAdapter.addAdapter(new OrdersAdapter(list));
+        if(LoginUtil.isLogin()==true){
+            //查找数据
+            BmobQuery<Order> orderBmobQuery = new BmobQuery<>();
+            orderBmobQuery.addWhereEqualTo("personID", LoginUtil.getPersonID());
+            orderBmobQuery.include("goods");
+            orderBmobQuery.findObjects(new FindListener<Order>() {
+                @Override
+                public void done(List<Order> list, BmobException e) {
+                    if(e==null){
+                        orders = list;
+                        Toast.makeText(OrdersActivity.this,"find.sucess",Toast.LENGTH_LONG).show();
+                        //设置适配器
+                        delegateAdapter.addAdapter(new OrdersAdapter(list));
+                        delegateAdapter.notifyDataSetChanged();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (LoginUtil.isLogin()==true){
+            not_btn = findViewById(R.id.rb_not);
+            not_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    not_btn.setBackgroundResource(R.color.gray);
+                    onWay_btn.setBackgroundResource(R.color.bg_white);
+                    reach_btn.setBackgroundResource(R.color.bg_white);
+                    List<Order> orderlist = new ArrayList<>();
+                    for(int i = 0;i< orders.size();i++){
+                        if(orders.get(i).getWeight()==1){
+                            if(orders.get(i)!=null) {
+                                orderlist.add(orders.get(i));
+                            }
+                        }
+                    }
+                    delegateAdapter.clear();
+                    delegateAdapter.addAdapter(new OrdersAdapter(orderlist));
                     delegateAdapter.notifyDataSetChanged();
                 }
-            }
-        });
+            });
+
+            onWay_btn = findViewById(R.id.rb_onWay);
+            onWay_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    not_btn.setBackgroundResource(R.color.bg_white);
+                    onWay_btn.setBackgroundResource(R.color.gray);
+                    reach_btn.setBackgroundResource(R.color.bg_white);
+                    List<Order> orderlist = new ArrayList<>();
+                    for(int i = 0;i< orders.size();i++){
+                        if(orders.get(i).getWeight()==2){
+                            if(orders.get(i)!=null) {
+                                orderlist.add(orders.get(i));
+                            }
+                        }
+                    }
+                    delegateAdapter.clear();
+                    delegateAdapter.addAdapter(new OrdersAdapter(orderlist));
+                    delegateAdapter.notifyDataSetChanged();
+
+                }
+            });
+
+            reach_btn = findViewById(R.id.rb_reach);
+            reach_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    not_btn.setBackgroundResource(R.color.bg_white);
+                    onWay_btn.setBackgroundResource(R.color.bg_white);
+                    reach_btn.setBackgroundResource(R.color.gray);
+                    List<Order> orderlist = new ArrayList<>();
+                    for(int i = 0;i< orders.size();i++){
+                        if(orders.get(i).getWeight()==3){
+                            if(orders.get(i)!=null) {
+                                orderlist.add(orders.get(i));
+                            }
+                        }
+                    }
+                    delegateAdapter.clear();
+                    delegateAdapter.addAdapter(new OrdersAdapter(orderlist));
+                    delegateAdapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
     private class OrdersAdapter extends DelegateAdapter.Adapter<OrdersViewHolder> {

@@ -26,11 +26,59 @@
             android:background="@color/bg_white"/>
 
     </FrameLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray"/>
+
+    <RadioGroup
+        android:id="@+id/rg_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_not"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="未发货"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:background="@color/bg_white"
+            android:layout_marginRight="2dp" />
+
+        <RadioButton
+            android:id="@+id/rb_onWay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="在路上"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:background="@color/bg_white"
+            android:layout_marginRight="2dp" />
+
+        <RadioButton
+            android:id="@+id/rb_reach"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="已送达"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:background="@color/bg_white"/>
+    </RadioGroup>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginBottom="10dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ordersRecyclerView"

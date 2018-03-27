@@ -8,31 +8,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/red_background">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
-
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:drawableTop="@mipmap/service"
-                android:layout_marginTop="5dp"
-                android:background="@null"
-                />
-
-
-            <Button
-                android:id="@+id/settings_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:drawableTop="@mipmap/setting"
-                android:layout_marginTop="5dp"
-                android:background="@null"/>
-
-        </LinearLayout>
-
         <ImageView
             android:id="@+id/head_view"
             android:layout_width="wrap_content"
@@ -42,21 +17,18 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:layout_marginRight="10dp"/>
-        <!--<TextView-->
-            <!--android:id="@+id/user_text"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="用户名"-->
-            <!--android:layout_toRightOf="@+id/head_view"-->
-            <!--android:layout_marginTop="60dp" />-->
 
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="积分:"-->
-            <!--android:layout_toRightOf="@+id/head_view"-->
-            <!--android:layout_below="@+id/user_text"/>-->
-
+        <TextView
+            android:id="@+id/toLoginTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请登陆→"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="55dp"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <View
@@ -112,38 +84,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/bg_white">
 
         <Button
-            android:id="@+id/pledge_btn"
+            android:id="@+id/password_modify_btn"
             android:drawableLeft="@mipmap/cash_pledge"
-            android:text="押金"
+            android:text="密码修改"
             style="@style/mine_below_button"
             />
         <View
             style="@style/line"
             android:layout_marginLeft="40dp"/>
-        <!--<Button-->
-            <!--android:id="@+id/certification_btn"-->
-            <!--android:drawableLeft="@mipmap/certification"-->
-            <!--android:text="身份认证"-->
-            <!--style="@style/mine_below_button"-->
-            <!--/>-->
-        <!--<View-->
-            <!--style="@style/line"-->
-            <!--android:layout_marginLeft="40dp"/>-->
-        <!--<Button-->
-            <!--android:id="@+id/gingeCertification_btn"-->
-            <!--android:drawableLeft="@mipmap/ginge_certification"-->
-            <!--android:text="芝麻认证"-->
-            <!--style="@style/mine_below_button"-->
-            <!--/>-->
-        <!--<View-->
-            <!--style="@style/line"-->
-            <!--android:layout_marginLeft="40dp"/>-->
 
         <Button
-        android:id="@+id/gingeCertification_btn"
+        android:id="@+id/addressMan_btn"
         android:drawableLeft="@mipmap/ginge_certification"
         android:text="地址管理"
         style="@style/mine_below_button"
@@ -161,6 +116,42 @@
         <View
             style="@style/line"
             android:layout_marginLeft="40dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginVertical="10dp"
+            android:paddingHorizontal="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="关于"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="37dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="版本号：1.0"
+                android:layout_alignParentRight="true"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+        <View
+            style="@style/line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/exitID_btn"
+            android:text="退出账号"
+            style="@style/mine_below_button"
+            android:paddingLeft="43dp"/>
+        <View
+            style="@style/line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
     </LinearLayout>
 

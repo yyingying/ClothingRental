@@ -91,8 +91,7 @@ public class RentalActivity extends BaseActivity {
                         order.setName(LoginUtil.getAdress().getPersonName());
                         order.setPhone(LoginUtil.getAdress().getPhone());
                         order.setAddress(LoginUtil.getAdress().getAdress());
-
-                        //Adress
+                        order.setWeight(1);
                         order.save(new SaveListener<String>() {
                             @Override
                             public void done(String s, BmobException e) {
